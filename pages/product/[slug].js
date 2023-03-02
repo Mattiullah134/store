@@ -9,7 +9,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const Slug = ({addToCart , product , variants}) => {
+const Slug = ({ addToCart, product, variants }) => {
+  // console.log(product.desc);
+
   const router = useRouter()
   const { slug } = router.query
 
@@ -17,17 +19,17 @@ const Slug = ({addToCart , product , variants}) => {
   const [size, setSize] = useState(product.size)
 
 
-    useEffect(() => {
-      setColor(product.color)
-      setSize(product.size)
-    }, [router.query])
+  useEffect(() => {
+    setColor(product.color)
+    setSize(product.size)
+  }, [router.query])
 
 
   // React tostify
   const addcart = () => toast.success("Item is added in your Cart.!");
 
 
-  const refresh = ( newSize , newColor ) => {
+  const refresh = (newSize, newColor) => {
     let url = `${process.env.NEXT_PUBLIC_HOST}/product/${variants[newColor][newSize]['slug']}`;
     router.push(url)
   }
@@ -35,19 +37,21 @@ const Slug = ({addToCart , product , variants}) => {
 
   return <>
     <Head>
-      <title>ProductDetails_Hunting_Store</title>
+      <title>ProductDetails_Organic_Cure</title>
       <meta name="description" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
-   </Head>
+    </Head>
 
 
 
-  <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container min-h-screen px-5 py-10 mx-auto">
-        <div className="lg:w-4/5 mx-auto justify-center flex flex-wrap">
-          <img alt="ecommerce" className="lg:w-2/5 h-450 object-cover object-top rounded" src={product.img}/>
+    <section className="text-gray-600 body-font overflow-hidden relative">
+      <div className="container min-h-screen px-5 py-10 mx-auto relative">
+        <div className="lg:w-4/5 mx-auto justify-center flex flex-wrap relative">
+          <img alt="ecommerce" className="lg:w-2/5 h-450 object-contain object-top rounded" src={product.prodtImage} />
+          {/* <img src={product.img} className="w-10 absolute top-20 left-60 opacity-75" /> */}
+
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">Hunting_Store</h2>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product.title} ({product.size}/{product.color})</h1>
+            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product.title}</h1>
             <div className="flex mb-4">
               <span className="flex items-center">
                 <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -85,40 +89,19 @@ const Slug = ({addToCart , product , variants}) => {
                 </a>
               </span>
             </div>
-            <p className="leading-relaxed">{product.desc}</p>
+            <div className="leading-relaxed">{product.desc.split(",").map(data => {
+              return <p className='leading-relaxed'>{data}</p>
+            })}</div>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-              <div className="flex">
-                <span className="mr-3">Color</span>
-                {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(size) && <button onClick={()=>{refresh(size , 'black')}} className={`border-2 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none ${ color === 'black' ? 'border-black' : 'border-gray-300' }`}></button>}
-                {Object.keys(variants).includes('blue') && Object.keys(variants['blue']).includes(size) && <button onClick={()=>{refresh(size , 'blue')}} className={`border-2 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none ${ color === 'blue' ? 'border-black' :'border-gray-300' }`}></button>}
-                {Object.keys(variants).includes('white') && Object.keys(variants['white']).includes(size) && <button onClick={()=>{refresh(size , 'white')}} className={`border-2 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none ${ color === 'white' ? 'border-black' :'border-gray-300' }`}></button>}
-                {Object.keys(variants).includes('yellow') && Object.keys(variants['yellow']).includes(size) && <button onClick={()=>{refresh(size , 'yellow')}} className={`border-2 bg-yellow-600 rounded-full w-6 h-6 focus:outline-none ${ color === 'yellow' ? 'border-black' : 'border-gray-300' }`}></button>}
-                {Object.keys(variants).includes('green') && Object.keys(variants['green']).includes(size) && <button onClick={()=>{refresh(size , 'green')}} className={`border-2 ml-1 bg-green-700 rounded-full w-6 h-6 focus:outline-none ${ color === 'green' ? 'border-black' : 'border-gray-300' }`}></button>}
-              </div>
-              <div className="flex ml-6 items-center">
-                <span className="mr-3">Size</span>
-                <div className="relative">
-                  <select value={size} onChange={(e)=>{refresh(e.target.value , color)}} className="rounded-md border pl-2 appearance-none py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base l-3 pr-10">
-                    {Object.keys(variants[color]).includes('s') && <option value={'s'}>S</option>}
-                    {Object.keys(variants[color]).includes('m') && <option value={'m'}>M</option>}
-                    {Object.keys(variants[color]).includes('l') && <option value={'l'}>L</option>}
-                    {Object.keys(variants[color]).includes('xl') && <option value={'xl'}>XL</option>}
-                    {Object.keys(variants[color]).includes('xxl') && <option value={'xxl'}>XXL</option>}
-                  </select>
-                  <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
-                      <path d="M6 9l6 6 6-6"></path>
-                    </svg>
-                  </span>
-                </div>
-              </div>
+
+
             </div>
             <div className="flex">
               <span className="title-font font-medium text-2xl text-gray-900">${product.price}</span>
-              <button onClick={()=>{ addcart() , addToCart(slug, product.title, 1 , product.price, product.img, size, color )}} className="flex -mt-1 ml-auto bg-indigo-600 text-white rounded-xl font-semibold border-0 py-3 px-6 focus:outline-none hover:bg-indigo-700 text-sm md:text-base">Add to Cart</button>
-              <ToastContainer position="bottom-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light"/>
+              <button onClick={() => { addcart(), addToCart(slug, product.title, 1, product.price, product.img, size, color) }} className="flex -mt-1 ml-auto bg-indigo-600 text-white rounded-xl font-semibold border-0 py-3 px-6 focus:outline-none hover:bg-indigo-700 text-sm md:text-base">Add to Cart</button>
+              <ToastContainer position="bottom-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
 
-            
+
               <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                 <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                   <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
@@ -137,32 +120,31 @@ const Slug = ({addToCart , product , variants}) => {
 
 
 export async function getServerSideProps(context) {
-  if (!mongoose.connections[0].readyState){
+  if (!mongoose.connections[0].readyState) {
     mongoose.set("strictQuery", false);
     await mongoose.connect(process.env.MONGO_URI)
   }
 
-    let product = await Product.findOne({slug: context.query.slug})
-    let variants = await Product.find({title: product.title , category: product.category})
-   
-      let colorSizeSlug = {}
-      for (let item of variants){
-        if(Object.keys(colorSizeSlug).includes(item.color) ){
-          colorSizeSlug[item.color][item.size] = {slug: item.slug}
-        }
-        else{
-          colorSizeSlug[item.color] = {}
-          colorSizeSlug[item.color][item.size] = {slug: item.slug}
-        }
-      }
+  let product = await Product.findOne({ slug: context.query.slug })
+  let variants = await Product.find({ title: product.title, category: product.category })
+  let colorSizeSlug = {}
+  for (let item of variants) {
+    if (Object.keys(colorSizeSlug).includes(item.color)) {
+      colorSizeSlug[item.color][item.size] = { slug: item.slug }
+    }
+    else {
+      colorSizeSlug[item.color] = {}
+      colorSizeSlug[item.color][item.size] = { slug: item.slug }
+    }
+  }
 
 
 
   // Pass data to the page via props
   return {
-      props: { product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(colorSizeSlug)) } 
-    }
-
+    props: { product: JSON.parse(JSON.stringify(product)), variants: JSON.parse(JSON.stringify(colorSizeSlug)) }
   }
+
+}
 
 export default Slug
