@@ -15,7 +15,7 @@ function Statics() {
                 {/* <h1 className='text-center text-3xl sm:text-4xl md:text-6xl font-sans tracking-tight text-black font-semibold mb-2'>Beloved Partners</h1> */}
                 <div className="flex flex-wrap -m-4 text-center justify-center aligns-start mb-28 ">
                     <div className="p-4 md:w-72 sm:w-1/2 object-contain  ">
-                        <Image src={p2plogo} alt='Ahmad Manzoor' width={200} />
+                        <Image src={p2plogo} alt='Sir Ahmad Manzoor' width={200} />
                     </div>
                     <div className="p-2 md:w-72 sm:w-1/2 object-contain ">
                         <Image src={tepsLogo} alt='Mian Ahmad Basit' width={200} />
