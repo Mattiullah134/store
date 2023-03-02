@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import React from 'react'
-import ahmadBasit from '../public/static/ahmadBasit.JPG';
-import ahmadManzoor from '../public/static/ahmadManzoor.JPG';
-import rizwanRaja from '../public/static/rizwanRaja.jpeg';
-import p2plogo from '../public/static/p2pCloudsLogo.png';
-import tepsLogo from '../public/static/tepsLogo.png';
-import pbiLogo from '../public/static/pbi.webp';
-import anzTechLogo from '../public/static/anz.webp'
+import ahmadBasit from '/public/ahmadBasit.JPG';
+import ahmadManzoor from '/public/ahmadManzoor.JPG';
+import rizwanRaja from '/public/rizwanRaja.jpeg';
+import p2plogo from '/public/p2pCloudsLogo.png';
+import tepsLogo from '/public/tepsLogo.png';
+import pbiLogo from '/public/pbi.webp';
+import anzTechLogo from '/public/anz.webp'
 
 function Statics() {
     return (
