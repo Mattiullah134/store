@@ -91,7 +91,7 @@ export default function Example({ cart, subTotal, deleteItemFromCart }) {
               <div className="ml-4 flex lg:ml-0">
                 <Link href={'/'}>
                   <span className="sr-only">Hunting_Store</span>
-                  <Image className="h-8 w-auto" src={logo} alt="organic cure" />
+                  <Image className="h-20 w-auto" src={logo} alt="organic cure" />
                 </Link>
               </div>
 

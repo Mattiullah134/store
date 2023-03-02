@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { AiOutlineArrowRight } from 'react-icons/ai';
-
+import glowTonic from '../assets/images/logos/glowTonic.png'
+import Image from 'next/image';
 
 
 const products = [
@@ -9,7 +10,7 @@ const products = [
     id: 1,
     name: 'Tonic',
     href: '/tonic',
-    imageSrc: 'https://www.vegas.pk/beta-admin/public/storage/images/product/1671184386--glow%20tonic.jpg',
+    imageSrc: glowTonic,
     imageAlt: "tonic for the face",
   },
 
@@ -28,8 +29,8 @@ function Shop() {
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <div key={product.id} className="group relative flex flex-col-reverse md:flex-col">
-              <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                <img src={product.imageSrc} alt={product.imageAlt} className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+              <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md  group-hover:opacity-75 lg:aspect-none lg:h-80">
+                <Image src={product.imageSrc} alt={product.imageAlt} className="h-full w-full object-contain object-center lg:h-full lg:w-full object-contain  border rounded" />
               </div>
               <div className="mt-4 flex justify-between">
                 <h3 className="text-base text-gray-700">
