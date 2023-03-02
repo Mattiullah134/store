@@ -82,7 +82,7 @@ const Slug = ({ addToCart, product, variants }) => {
 
             </div>
             <div className="leading-relaxed">{product.desc.split(",").map(data => {
-              return <p className='leading-relaxed'>{data}</p>
+              return <p key={data} className='leading-relaxed'>{data}</p>
             })}</div>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
 
