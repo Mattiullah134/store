@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import React from 'react'
-import ahmadBasit from '../assets/images/users/ahmadBasit.JPG';
-import ahmadManzoor from '../assets/images/users/ahmadManzoor.JPG';
-import rizwanRaja from '../assets/images/users/rizwanRaja.jpeg';
-import p2plogo from '../assets/images/logos/p2pCloudsLogo.png';
-import tepsLogo from '../assets/images/logos/tepsLogo.png';
-import pbiLogo from '../assets/images/logos/pbi.webp';
-import anzTechLogo from '../assets/images/logos/anz.webp';
+import ahmadBasit from '../public/static/ahmadBasit.JPG';
+import ahmadManzoor from '../public/static/ahmadManzoor.JPG';
+import rizwanRaja from '../public/static/rizwanRaja.jpeg';
+import p2plogo from '../public/static/p2pCloudsLogo.png';
+import tepsLogo from '../public/static/tepsLogo.png';
+import pbiLogo from '../public/static/pbi.webp';
+import anzTechLogo from '../public/static/anz.webp'
+
 function Statics() {
     return (
         <section className="text-gray-600 body-font ">
