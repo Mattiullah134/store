@@ -51,7 +51,9 @@ function Tshirt({ product }) {
 export async function getServerSideProps() {
 
   const data = await fetch('http://localhost:3000/api/getProduct', {
-    contentType: 'applicationJson'
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   const jsonData = await data.json();
   // Pass data to the page via props
