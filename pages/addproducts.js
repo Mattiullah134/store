@@ -15,7 +15,7 @@ function Addproducts() {
 
 
   const [title, setTitle] = useState('')
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('tonic')
   const [price, setPrice] = useState('')
   const [slug, setSlug] = useState('')
   const [desc, setDesc] = useState('');
@@ -110,10 +110,8 @@ function Addproducts() {
                 <span className="mr-3">Category: </span>
                 <div className="relative">
                   <select name='category' value={category} onChange={handleChange} className="rounded-md border pl-2 appearance-none py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-800 text-base l-3 pr-10" >
-                    <option value={'tshirts'}>Tonic</option>
-                    <option value={'120ml'}>120ml</option>
-                    <option value={'150ml'}>150ml</option>
-                    <option value={'200ml'}>200ml</option>
+                    <option value={'tonic'}>Tonic</option>
+
                   </select>
                   <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
