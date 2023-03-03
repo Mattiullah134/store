@@ -50,7 +50,7 @@ function Tshirt({ product }) {
 
 export async function getServerSideProps() {
 
-  const data = await fetch('http://localhost:3000/api/getProduct', {
+  const data = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getProduct`, {
     headers: {
       "Content-Type": "application/json",
     },
